@@ -1,16 +1,23 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.hardware.Servo;
 
 /**
- * Created by stephenmcconnell on 9/15/17.
+ * Created by Cameron on 9/15/17.
  */
 
 public class Hardware_Speedy
 {
     public DcMotor leftMotor = null;
     public DcMotor rightMotor = null;
+    public DcMotor liftMotor = null;
+    public Servo leftGrabber = null;
+    public Servo rightGrabber = null;
+
+    public static final double START_SERVO = 0;
 
     HardwareMap hwMap = null;
 
@@ -22,12 +29,21 @@ public class Hardware_Speedy
 
         leftMotor = hwMap.dcMotor.get("left motor");
         rightMotor = hwMap.dcMotor.get("right motor");
+        liftMotor = hwMap.dcMotor.get("lift motor");
 
-        leftMotor.setDirection(DcMotor.Direction.FORWARD);
-        rightMotor.setDirection(DcMotor.Direction.REVERSE);
+        leftGrabber = hwMap.servo.get("left grabber");
+        rightGrabber = hwMap.servo.get("right grabber");
+
+        leftMotor.setDirection(DcMotor.Direction.REVERSE);
+        rightMotor.setDirection(DcMotor.Direction.FORWARD);
+        liftMotor.setDirection(DcMotor.Direction.FORWARD);
 
         leftMotor.setPower(0);
         rightMotor.setPower(0);
+        liftMotor.setPower(0);
+
+        leftGrabber.setPosition(START_SERVO);
+        rightGrabber.setPosition(START_SERVO);
 
     }
 
