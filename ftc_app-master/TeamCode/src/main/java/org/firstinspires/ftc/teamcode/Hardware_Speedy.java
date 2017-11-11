@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode;
 
+import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
@@ -16,8 +17,11 @@ public class Hardware_Speedy
     public DcMotor liftMotor = null;
     public Servo leftGrabber = null;
     public Servo rightGrabber = null;
+    public Servo rightJewel = null;
+    public ColorSensor rightColorSensor;
 
-    public static final double START_SERVO = 0;
+
+    public static final double START_SERVO = .2;
 
     HardwareMap hwMap = null;
 
@@ -33,6 +37,9 @@ public class Hardware_Speedy
 
         leftGrabber = hwMap.servo.get("left grabber");
         rightGrabber = hwMap.servo.get("right grabber");
+        rightJewel = hwMap.servo.get("right jewel");
+
+        rightColorSensor = hwMap.colorSensor.get("right color");
 
         leftMotor.setDirection(DcMotor.Direction.REVERSE);
         rightMotor.setDirection(DcMotor.Direction.FORWARD);
@@ -44,6 +51,8 @@ public class Hardware_Speedy
 
         leftGrabber.setPosition(START_SERVO);
         rightGrabber.setPosition(START_SERVO);
+        rightJewel.setPosition(1);
+
 
     }
 

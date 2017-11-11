@@ -13,8 +13,9 @@ public class Teleop_Speedy extends OpMode {
     static final int    CYCLE_MS    =   50;     // period of each cycle
     static final double MAX_FWD     =  1.0;     // Maximum FWD power applied to motor
     static final double MAX_REV     = -1.0;     // Maximum REV power applied to motor
-  //  double left = 0;
-  //  double right = 0;
+    boolean PRECISE_DRIVE = false;
+    double left = 0;
+    double right = 0;
 
     Hardware_Speedy robot = new Hardware_Speedy();
 
@@ -40,11 +41,27 @@ public class Teleop_Speedy extends OpMode {
     @Override
     public void loop() {
 
-        double left;
-        double right;
-        
-        left = -gamepad1.left_stick_y;
-        right = -gamepad1.right_stick_y;
+//        double left;
+ //       double right;
+
+        if(PRECISE_DRIVE == false){
+            left = -gamepad1.left_stick_y;
+            right = -gamepad1.right_stick_y;}
+        else if(PRECISE_DRIVE == true){
+            left = -.15 * (gamepad1.left_stick_y);
+            right = -.15 * (gamepad1.right_stick_y);}
+
+        //jewel arm
+        if(gamepad1.x)
+            robot.rightJewel.setPosition(.3);
+        else if(gamepad1.y)
+            robot.rightJewel.setPosition(1);
+
+        //toggle precise drive
+        if(gamepad1.right_trigger > 0 && gamepad1.left_trigger > 0 && PRECISE_DRIVE == false)
+            PRECISE_DRIVE = true;
+        else if(gamepad1.right_trigger > 0 && gamepad1.left_trigger > 0 && PRECISE_DRIVE == true)
+            PRECISE_DRIVE = false;
 
  /*       if(gamepad1.left_stick_y<0 && left<MAX_FWD)
             left = -gamepad1.left_stick_y;

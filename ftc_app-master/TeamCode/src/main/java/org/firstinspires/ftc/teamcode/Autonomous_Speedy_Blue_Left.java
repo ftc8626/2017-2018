@@ -9,8 +9,8 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  * Created by Cameron on 9/15/17.
  */
 
-@Autonomous(name="Autonomous_Speedy", group="Speedy")
-public class Autonomous_Speedy extends LinearOpMode {
+@Autonomous(name="Autonomous_Speedy_Blue_Left", group="Speedy")
+public class Autonomous_Speedy_Blue_Left extends LinearOpMode {
 
     Hardware_Speedy robot = new Hardware_Speedy();
     private ElapsedTime runtime = new ElapsedTime();
@@ -19,9 +19,15 @@ public class Autonomous_Speedy extends LinearOpMode {
    // static final double DRIVE_GEAR_REDUCTION = 2.0 ;
     static final double WHEEL_DIAMETER_INCHES = 4.0 ;
     static final double COUNTS_PER_INCH = (COUNTS_PER_MOTOR_REV) / (WHEEL_DIAMETER_INCHES * 3.1415);
+    //new variable for encoders
+    static final double ENCODER_DRIVE= (COUNTS_PER_INCH) * (.8);
 
     static final double DRIVE_SPEED = 0.6;
     static final double TURN_SPEED = 0.5;
+
+    public final String BALANCE_BOARD = "BALANCE_BOARD";
+    public final String BALANCE_BOARD_LEFT = "BALANCE_BOARD_LEFT";
+    public final String BALANCE_BOARD_RIGHT = "BALANCE_BOARD_RIGHT";
 
     @Override
     public void runOpMode() {
@@ -45,22 +51,19 @@ public class Autonomous_Speedy extends LinearOpMode {
         waitForStart();
 
         //path starts here
-        //grab glyph
-     //   robot.leftGrabber.setPosition(.225);
-     //   robot.rightGrabber.setPosition(.275);
 
-        //drive, turn, drive, back up
-        encoderDrive(DRIVE_SPEED, 1, 1, 5.0);
- /*       encoderDrive(DRIVE_SPEED, 12, 6, 4.0);
-        encoderDrive(DRIVE_SPEED, 6, 12, 4.0);
+        robot.leftGrabber.setPosition(.225);
+        robot.rightGrabber.setPosition(.275);
+        robot.liftMotor.setPower(.3);
+        sleep(1000);
+        robot.liftMotor.setPower(0);
 
-        //release glyph
-        robot.leftGrabber.setPosition(0);
-        robot.rightGrabber.setPosition(0);
+        encoderDrive(DRIVE_SPEED, -20, -20, 5.0);
+        encoderDrive(DRIVE_SPEED, -11, 11, 4.0);
+        encoderDrive(DRIVE_SPEED, 7.5, 7.5, 5.0);
+        encoderDrive(DRIVE_SPEED, -8.25, 8.25, 4.0);
+        encoderDrive(DRIVE_SPEED, 10, 10, 5.0);
 
-        //back up
-        encoderDrive(DRIVE_SPEED, -6, -6, 5.0);
-        */
         telemetry.addData("Path", "Complete");
         telemetry.update();
 
@@ -74,8 +77,8 @@ public class Autonomous_Speedy extends LinearOpMode {
 
         if (opModeIsActive()) {
 
-            newLeftTarget = robot.leftMotor.getCurrentPosition() + (int) (leftInches * COUNTS_PER_INCH);
-            newRightTarget = robot.rightMotor.getCurrentPosition() + (int) (rightInches * COUNTS_PER_INCH);
+            newLeftTarget = robot.leftMotor.getCurrentPosition() + (int) (leftInches * ENCODER_DRIVE);
+            newRightTarget = robot.rightMotor.getCurrentPosition() + (int) (rightInches * ENCODER_DRIVE);
             robot.leftMotor.setTargetPosition(newLeftTarget);
             robot.rightMotor.setTargetPosition(newRightTarget);
 
