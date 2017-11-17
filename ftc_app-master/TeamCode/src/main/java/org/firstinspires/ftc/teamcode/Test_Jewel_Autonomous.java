@@ -49,7 +49,8 @@ public class Test_Jewel_Autonomous extends LinearOpMode {
 
         waitForStart();
 
-        robot.rightJewel.setPosition(.3);
+        robot.rightJewel.setPosition(.35);
+        sleep(500);
         while (robot.rightColorSensor.red() < 1) {
 
             robot.rightColorSensor.enableLed(true);    //Set the mode of the color sensor using LEDState
