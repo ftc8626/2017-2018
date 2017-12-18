@@ -52,8 +52,8 @@ public class Autonomous_Speedy_Blue_Right extends LinearOpMode {
 
         //path starts here
 
-        robot.leftGrabber.setPosition(.225);
-        robot.rightGrabber.setPosition(.275);
+        robot.leftGrabber.setPosition(.22);
+        robot.rightGrabber.setPosition(.27);
         robot.liftMotor.setPower(.3);
         sleep(1000);
         robot.liftMotor.setPower(0);

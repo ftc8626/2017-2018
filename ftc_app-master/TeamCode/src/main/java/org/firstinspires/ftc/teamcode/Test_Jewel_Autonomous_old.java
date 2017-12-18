@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
@@ -9,7 +10,8 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  * Created by kpingel on 11/10/17.
  */
 @Autonomous(name="Test_Jewel_Autonomous", group="Speedy")
-public class Test_Jewel_Autonomous extends LinearOpMode {
+@Disabled
+public class Test_Jewel_Autonomous_old extends LinearOpMode {
 
     Hardware_Speedy robot = new Hardware_Speedy();
     private ElapsedTime runtime = new ElapsedTime();
@@ -29,18 +31,9 @@ public class Test_Jewel_Autonomous extends LinearOpMode {
     public final String BALANCE_BOARD_RIGHT = "BALANCE_BOARD_RIGHT";
 
     @Override
-   public void runOpMode() {
+    public void runOpMode() {
 
         robot.init(hardwareMap);
-
-        boolean LEDState = true;
-
-       // robot.rightColorSensor.enableLed(LEDState);//moved here from below
-
-
-        float hsvValues[] = {0F,0F,0F};
- //       final float values[] = hsvValues;
-        // the above line may have been the cause of the init problem
 
         telemetry.addData("Status", "Resetting Encoders");
         telemetry.update();
@@ -58,51 +51,24 @@ public class Test_Jewel_Autonomous extends LinearOpMode {
 
         waitForStart();
 
-        //path starts here
-//
-//        robot.leftGrabber.setPosition(.22);
-//        robot.rightGrabber.setPosition(.27);
-//        robot.liftMotor.setPower(.3);
-//        sleep(1000);
-//        robot.liftMotor.setPower(0);
+        robot.rightJewel.setPosition(.35);
+        sleep(500);
+        while (robot.rightColorSensor.red() < 1) {
 
-        robot.rightJewel.setPosition(.9);
-        robot.rightJewel.setPosition(.8);
-        robot.rightJewel.setPosition(.7);
-        robot.rightJewel.setPosition(.6);
-        robot.rightJewel.setPosition(.5);
-        robot.rightJewel.setPosition(.4);
-        robot.rightJewel.setPosition(.34);
-        sleep(4000);
+            robot.rightColorSensor.enableLed(true);    //Set the mode of the color sensor using LEDState
 
-        while (opModeIsActive() && robot.rightColorSensor.blue() < 2 && robot.rightMotor.getCurrentPosition() < 100) {
-            robot.rightColorSensor.enableLed(LEDState);
 
-            telemetry.addData("2 Clear", robot.rightColorSensor.alpha());
-            telemetry.addData("3 Red  ", robot.rightColorSensor.red());
-            telemetry.addData("4 Green", robot.rightColorSensor.green());
-            telemetry.addData("5 Blue ", robot.rightColorSensor.blue());
-            telemetry.addData("6 Hue", hsvValues[0]);
+            telemetry.addData("6 Red2  ", robot.rightColorSensor.red());
+            telemetry.addData("8 Blue2 ", robot.rightColorSensor.blue());
+
             telemetry.update();
 
-            if (robot.rightColorSensor.red() > 2){
-            encoderDrive(DRIVE_SPEED, -4, -4, 4);
-            sleep(500);
-            robot.rightJewel.setPosition(1);
-            sleep(500);
-            encoderDrive(DRIVE_SPEED, 4, 4,4);}
+            if (robot.rightColorSensor.blue() > robot.rightColorSensor.red() && robot.rightColorSensor.blue() > 1) {
+                encoderDrive(DRIVE_SPEED, 3, 3, 5);
+                encoderDrive(DRIVE_SPEED, -3, -3, 5);
+            }
         }
-
-        if (robot.rightColorSensor.blue() > robot.rightColorSensor.red() && robot.rightColorSensor.blue() > robot.rightColorSensor.green()) {
-            encoderDrive(DRIVE_SPEED, 4, 4, 4);
-            sleep(500);
-            robot.rightJewel.setPosition(1);
-            sleep(500);
-            encoderDrive(DRIVE_SPEED, -4, -4, 4);
-        }
-
-        }
-
+    }
 
     public void encoderDrive(double speed,
                              double leftInches, double rightInches,

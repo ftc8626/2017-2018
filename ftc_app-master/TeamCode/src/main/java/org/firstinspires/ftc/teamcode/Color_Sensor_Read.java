@@ -8,8 +8,8 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 /**
  * Created by kpingel on 11/10/17.
  */
-@Autonomous(name="Test_Jewel_Autonomous", group="Speedy")
-public class Test_Jewel_Autonomous extends LinearOpMode {
+@Autonomous(name="Color_Sensor_Read", group="Speedy")
+public class Color_Sensor_Read extends LinearOpMode {
 
     Hardware_Speedy robot = new Hardware_Speedy();
     private ElapsedTime runtime = new ElapsedTime();
@@ -29,18 +29,12 @@ public class Test_Jewel_Autonomous extends LinearOpMode {
     public final String BALANCE_BOARD_RIGHT = "BALANCE_BOARD_RIGHT";
 
     @Override
-   public void runOpMode() {
+    public void runOpMode() {
 
         robot.init(hardwareMap);
-
         boolean LEDState = true;
-
-       // robot.rightColorSensor.enableLed(LEDState);//moved here from below
-
-
         float hsvValues[] = {0F,0F,0F};
- //       final float values[] = hsvValues;
-        // the above line may have been the cause of the init problem
+        final float values[] = hsvValues;
 
         telemetry.addData("Status", "Resetting Encoders");
         telemetry.update();
@@ -59,9 +53,8 @@ public class Test_Jewel_Autonomous extends LinearOpMode {
         waitForStart();
 
         //path starts here
-//
-//        robot.leftGrabber.setPosition(.22);
-//        robot.rightGrabber.setPosition(.27);
+//        robot.leftGrabber.setPosition(.225);
+//        robot.rightGrabber.setPosition(.275);
 //        robot.liftMotor.setPower(.3);
 //        sleep(1000);
 //        robot.liftMotor.setPower(0);
@@ -72,10 +65,10 @@ public class Test_Jewel_Autonomous extends LinearOpMode {
         robot.rightJewel.setPosition(.6);
         robot.rightJewel.setPosition(.5);
         robot.rightJewel.setPosition(.4);
-        robot.rightJewel.setPosition(.34);
-        sleep(4000);
+        robot.rightJewel.setPosition(.35);
+        sleep(5000);
 
-        while (opModeIsActive() && robot.rightColorSensor.blue() < 2 && robot.rightMotor.getCurrentPosition() < 100) {
+        while (opModeIsActive() ) {
             robot.rightColorSensor.enableLed(LEDState);
 
             telemetry.addData("2 Clear", robot.rightColorSensor.alpha());
@@ -84,56 +77,59 @@ public class Test_Jewel_Autonomous extends LinearOpMode {
             telemetry.addData("5 Blue ", robot.rightColorSensor.blue());
             telemetry.addData("6 Hue", hsvValues[0]);
             telemetry.update();
-
-            if (robot.rightColorSensor.red() > 2){
-            encoderDrive(DRIVE_SPEED, -4, -4, 4);
-            sleep(500);
-            robot.rightJewel.setPosition(1);
-            sleep(500);
-            encoderDrive(DRIVE_SPEED, 4, 4,4);}
         }
 
-        if (robot.rightColorSensor.blue() > robot.rightColorSensor.red() && robot.rightColorSensor.blue() > robot.rightColorSensor.green()) {
-            encoderDrive(DRIVE_SPEED, 4, 4, 4);
-            sleep(500);
-            robot.rightJewel.setPosition(1);
-            sleep(500);
-            encoderDrive(DRIVE_SPEED, -4, -4, 4);
+//            if (robot.rightColorSensor.red() > 2){
+//            encoderDrive(DRIVE_SPEED, -4, -4, 4);
+//            sleep(500);
+//            robot.rightJewel.setPosition(1);
+//            sleep(500);
+//            encoderDrive(DRIVE_SPEED, 4, 4,4);}
+//        }
+
+   //     sleep (60000);
+
+//        if (robot.rightColorSensor.blue() > robot.rightColorSensor.red() && robot.rightColorSensor.blue() > robot.rightColorSensor.green()) {
+//            encoderDrive(DRIVE_SPEED, 4, 4, 4);
+//            sleep(500);
+//            robot.rightJewel.setPosition(1);
+//            sleep(500);
+//            encoderDrive(DRIVE_SPEED, -4, -4, 4);
         }
 
-        }
+   //     }
 
 
-    public void encoderDrive(double speed,
-                             double leftInches, double rightInches,
-                             double timeoutS) {
-        int newLeftTarget;
-        int newRightTarget;
-
-        if (opModeIsActive()) {
-
-            newLeftTarget = robot.leftMotor.getCurrentPosition() + (int) (leftInches * ENCODER_DRIVE);
-            newRightTarget = robot.rightMotor.getCurrentPosition() + (int) (rightInches * ENCODER_DRIVE);
-            robot.leftMotor.setTargetPosition(newLeftTarget);
-            robot.rightMotor.setTargetPosition(newRightTarget);
-
-            robot.leftMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            robot.rightMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-
-            runtime.reset();
-            robot.leftMotor.setPower(Math.abs(speed));
-            robot.rightMotor.setPower(Math.abs(speed));
-
-            while (opModeIsActive() &&
-                    (runtime.seconds() < timeoutS) &&
-                    (robot.leftMotor.isBusy() && robot.rightMotor.isBusy())) {
-
-                telemetry.addData("Path1", "Running to %7d :%7d", newLeftTarget, newRightTarget);
-                telemetry.addData("Path2", "Running at %7d :%7d",
-                        robot.leftMotor.getCurrentPosition(),
-                        robot.rightMotor.getCurrentPosition());
-                telemetry.update();
-            }
-        }
-    }
+//    public void encoderDrive(double speed,
+//                             double leftInches, double rightInches,
+//                             double timeoutS) {
+//        int newLeftTarget;
+//        int newRightTarget;
+//
+//        if (opModeIsActive()) {
+//
+//            newLeftTarget = robot.leftMotor.getCurrentPosition() + (int) (leftInches * ENCODER_DRIVE);
+//            newRightTarget = robot.rightMotor.getCurrentPosition() + (int) (rightInches * ENCODER_DRIVE);
+//            robot.leftMotor.setTargetPosition(newLeftTarget);
+//            robot.rightMotor.setTargetPosition(newRightTarget);
+//
+//            robot.leftMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+//            robot.rightMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+//
+//            runtime.reset();
+//            robot.leftMotor.setPower(Math.abs(speed));
+//            robot.rightMotor.setPower(Math.abs(speed));
+//
+//            while (opModeIsActive() &&
+//                    (runtime.seconds() < timeoutS) &&
+//                    (robot.leftMotor.isBusy() && robot.rightMotor.isBusy())) {
+//
+//                telemetry.addData("Path1", "Running to %7d :%7d", newLeftTarget, newRightTarget);
+//                telemetry.addData("Path2", "Running at %7d :%7d",
+//                        robot.leftMotor.getCurrentPosition(),
+//                        robot.rightMotor.getCurrentPosition());
+//                telemetry.update();
+//            }
+//        }
+//    }
 }

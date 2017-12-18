@@ -53,8 +53,6 @@ public class Hardware_Speedy
         rightGrabber.setPosition(START_SERVO);
         rightJewel.setPosition(1);
 
-
     }
-
 
 }

@@ -94,8 +94,8 @@ public class Teleop_Speedy extends OpMode {
         //right bumper = closed
         //left bumper = open
         if(gamepad1.right_bumper) {
-            robot.rightGrabber.setPosition(.275);
-            robot.leftGrabber.setPosition(.225);
+            robot.rightGrabber.setPosition(.27);
+            robot.leftGrabber.setPosition(.22);
         }
         else if (gamepad1.left_bumper) {
             robot.rightGrabber.setPosition(0);
