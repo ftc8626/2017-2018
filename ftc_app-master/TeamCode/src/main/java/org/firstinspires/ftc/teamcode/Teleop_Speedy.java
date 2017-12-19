@@ -45,11 +45,11 @@ public class Teleop_Speedy extends OpMode {
  //       double right;
 
         if(PRECISE_DRIVE == false){
-            left = -gamepad1.left_stick_y;
-            right = -gamepad1.right_stick_y;}
+            left = -.9 * gamepad1.left_stick_y;
+            right = -.9 * gamepad1.right_stick_y;}
         else if(PRECISE_DRIVE == true){
-            left = -.15 * (gamepad1.left_stick_y);
-            right = -.15 * (gamepad1.right_stick_y);}
+            left = -.2 * (gamepad1.left_stick_y);
+            right = -.2 * (gamepad1.right_stick_y);}
 
         //jewel arm
         if(gamepad1.x)
