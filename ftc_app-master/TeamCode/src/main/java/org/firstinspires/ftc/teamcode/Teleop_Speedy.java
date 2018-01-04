@@ -63,26 +63,6 @@ public class Teleop_Speedy extends OpMode {
         else if(gamepad1.right_trigger > 0 && gamepad1.left_trigger > 0 && PRECISE_DRIVE == true)
             PRECISE_DRIVE = false;
 
- /*       if(gamepad1.left_stick_y<0 && left<MAX_FWD)
-            left = -gamepad1.left_stick_y;
-        else if(gamepad1.left_stick_y==0 && left>0)
-            left-=INCREMENT;
-
-        if(gamepad1.right_stick_y<0 && right<MAX_FWD)
-            right = -gamepad1.right_stick_y;
-        else if(gamepad1.right_stick_y==0 && right>0)
-            right-=INCREMENT;
-
-        if(gamepad1.left_stick_y>0 && left>MAX_REV)
-            left = -gamepad1.left_stick_y;
-        else if(gamepad1.left_stick_y==0 && left<0)
-            left+=INCREMENT;
-
-        if(gamepad1.right_stick_y>0 && right>MAX_REV)
-            right = -gamepad1.right_stick_y;
-        else if(gamepad1.right_stick_y==0 && right<0)
-            right+=INCREMENT;
-*/
         //dpad = lift
         if(gamepad1.dpad_up)
             robot.liftMotor.setPower(.3);
