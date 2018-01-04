@@ -58,10 +58,14 @@ public class Teleop_Speedy extends OpMode {
             robot.rightJewel.setPosition(1);
 
         //toggle precise drive
-        if(gamepad1.right_trigger > 0 && gamepad1.left_trigger > 0 && PRECISE_DRIVE == false)
+        //right trigger = sneaky
+        //left trigger = speedy
+
+       if(gamepad1.right_trigger > 0 && PRECISE_DRIVE == false)
             PRECISE_DRIVE = true;
-        else if(gamepad1.right_trigger > 0 && gamepad1.left_trigger > 0 && PRECISE_DRIVE == true)
+        else if (gamepad1.left_trigger > 0 && PRECISE_DRIVE == true)
             PRECISE_DRIVE = false;
+
 
  /*       if(gamepad1.left_stick_y<0 && left<MAX_FWD)
             left = -gamepad1.left_stick_y;
@@ -93,7 +97,8 @@ public class Teleop_Speedy extends OpMode {
 
         //right bumper = closed
         //left bumper = open
-        if(gamepad1.right_bumper) {
+
+       if(gamepad1.right_bumper) {
             robot.rightGrabber.setPosition(.27);
             robot.leftGrabber.setPosition(.22);
         }
