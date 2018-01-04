@@ -75,7 +75,7 @@ public class Test_Jewel_Autonomous extends LinearOpMode {
         robot.rightJewel.setPosition(.34);
         sleep(4000);
 
-        while (opModeIsActive() && robot.rightColorSensor.blue() < 2 && robot.rightMotor.getCurrentPosition() < 10) {
+        while (opModeIsActive() && robot.rightColorSensor.blue() < 2 && robot.rightMotor.getCurrentPosition() < 100) {
             robot.rightColorSensor.enableLed(LEDState);
 
             telemetry.addData("2 Clear", robot.rightColorSensor.alpha());

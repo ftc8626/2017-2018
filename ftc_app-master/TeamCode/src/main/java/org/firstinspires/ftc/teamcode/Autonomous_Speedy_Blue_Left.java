@@ -1,6 +1,5 @@
 package org.firstinspires.ftc.teamcode;
 
-import com.qualcomm.robotcore.eventloop.opmode.Autonomous;//https://www.youtube.com/watch?v=Gyu82WG_edM
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -59,16 +58,12 @@ public class Autonomous_Speedy_Blue_Left extends LinearOpMode {
         sleep(1000);
         robot.liftMotor.setPower(0);
 
- /*      encoderDrive(DRIVE_SPEED, -29, -29, 5.0);
+        encoderDrive(DRIVE_SPEED, -20, -20, 5.0);
         encoderDrive(DRIVE_SPEED, -11, 11, 4.0);
         encoderDrive(DRIVE_SPEED, 7.5, 7.5, 5.0);
-        encoderDrive(DRIVE_SPEED, -13, 13, 4.0);
+        encoderDrive(DRIVE_SPEED, -8.25, 8.25, 4.0);
         encoderDrive(DRIVE_SPEED, 10, 10, 5.0);
-*/
-        encoderDrive(DRIVE_SPEED, 32, 32, 5.0);
-        encoderDrive(DRIVE_SPEED, 5, -5, 4.0);
-        encoderDrive(DRIVE_SPEED, -5, 5, 4.0);
-        encoderDrive(DRIVE_SPEED, 12, 12, 5.0);
+
 
         telemetry.addData("Path", "Complete");
         telemetry.update();

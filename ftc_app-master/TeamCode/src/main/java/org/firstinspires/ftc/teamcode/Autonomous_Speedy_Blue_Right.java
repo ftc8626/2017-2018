@@ -58,7 +58,7 @@ public class Autonomous_Speedy_Blue_Right extends LinearOpMode {
         sleep(1000);
         robot.liftMotor.setPower(0);
 
-        encoderDrive(DRIVE_SPEED, -30, -30, 5.0);
+        encoderDrive(DRIVE_SPEED, -23, -23, 5.0);
         encoderDrive(DRIVE_SPEED, 12, -12, 4.0);
         encoderDrive(DRIVE_SPEED, 12, 12, 5.0);
 
