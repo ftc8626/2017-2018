@@ -24,22 +24,19 @@ public class Test_Jewel_Autonomous extends LinearOpMode {
     static final double DRIVE_SPEED = 0.6;
     static final double TURN_SPEED = 0.5;
 
-    public final String BALANCE_BOARD = "BALANCE_BOARD";
-    public final String BALANCE_BOARD_LEFT = "BALANCE_BOARD_LEFT";
-    public final String BALANCE_BOARD_RIGHT = "BALANCE_BOARD_RIGHT";
 
     @Override
-   public void runOpMode() {
+    public void runOpMode() {
 
         robot.init(hardwareMap);
 
         boolean LEDState = true;
 
-       // robot.rightColorSensor.enableLed(LEDState);//moved here from below
+        // robot.rightColorSensor.enableLed(LEDState);//moved here from below
 
 
-        float hsvValues[] = {0F,0F,0F};
- //       final float values[] = hsvValues;
+        float hsvValues[] = {0F, 0F, 0F};
+        //       final float values[] = hsvValues;
         // the above line may have been the cause of the init problem
 
         telemetry.addData("Status", "Resetting Encoders");
@@ -85,15 +82,17 @@ public class Test_Jewel_Autonomous extends LinearOpMode {
             telemetry.addData("6 Hue", hsvValues[0]);
             telemetry.update();
 
-            if (robot.rightColorSensor.red() > 2){
-            encoderDrive(DRIVE_SPEED, -4, -4, 4);
-            sleep(500);
-            robot.rightJewel.setPosition(1);
-            sleep(500);
-            encoderDrive(DRIVE_SPEED, 4, 4,4);}
+            if (robot.rightColorSensor.red() > 2) {
+                encoderDrive(DRIVE_SPEED, -4, -4, 4);
+                sleep(500);
+                robot.rightJewel.setPosition(1);
+                sleep(500);
+                encoderDrive(DRIVE_SPEED, 4, 4, 4);
+            }
         }
 
-        if (robot.rightColorSensor.blue() > robot.rightColorSensor.red() && robot.rightColorSensor.blue() > robot.rightColorSensor.green()) {
+        if (robot.rightColorSensor.blue() > robot.rightColorSensor.red() && robot.rightColorSensor.blue() > robot.rightColorSensor.green())
+        {
             encoderDrive(DRIVE_SPEED, 4, 4, 4);
             sleep(500);
             robot.rightJewel.setPosition(1);
@@ -101,7 +100,7 @@ public class Test_Jewel_Autonomous extends LinearOpMode {
             encoderDrive(DRIVE_SPEED, -4, -4, 4);
         }
 
-        }
+    }
 
 
     public void encoderDrive(double speed,
