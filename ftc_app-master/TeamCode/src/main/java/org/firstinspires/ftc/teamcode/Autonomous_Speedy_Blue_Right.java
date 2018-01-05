@@ -58,9 +58,12 @@ public class Autonomous_Speedy_Blue_Right extends LinearOpMode {
         sleep(1000);
         robot.liftMotor.setPower(0);
 
-        encoderDrive(DRIVE_SPEED, -30, -30, 5.0);
+        encoderDrive(DRIVE_SPEED, -25, -25, 5.0);
         encoderDrive(DRIVE_SPEED, 12, -12, 4.0);
         encoderDrive(DRIVE_SPEED, 12, 12, 5.0);
+        robot.rightGrabber.setPosition(0);
+        robot.leftGrabber.setPosition(0);
+        encoderDrive(DRIVE_SPEED, -2, -2, 5.0);
 
         telemetry.addData("Path", "Complete");
         telemetry.update();
