@@ -1,15 +1,17 @@
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.Tests.Auto_Test;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
+import org.firstinspires.ftc.teamcode.Hardware_Speedy;
+
 /**
  * Created by kpingel on 11/10/17.
  */
 @Autonomous(name="Color_Sensor_Read", group="Speedy")
-public class Color_Sensor_Read extends LinearOpMode {
+public class Color_Sensor_Read_Test extends LinearOpMode {
 
     Hardware_Speedy robot = new Hardware_Speedy();
     private ElapsedTime runtime = new ElapsedTime();

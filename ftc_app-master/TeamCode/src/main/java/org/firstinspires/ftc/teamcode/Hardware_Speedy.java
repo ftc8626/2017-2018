@@ -18,6 +18,8 @@ public class Hardware_Speedy
     public Servo leftGrabber = null;
     public Servo rightGrabber = null;
     public Servo rightJewel = null;
+    public Servo rightRamp = null;
+    public Servo leftRamp = null;
     public ColorSensor rightColorSensor;
 
 
@@ -38,6 +40,8 @@ public class Hardware_Speedy
         leftGrabber = hwMap.servo.get("left grabber");
         rightGrabber = hwMap.servo.get("right grabber");
         rightJewel = hwMap.servo.get("right jewel");
+        rightRamp = hwMap.servo.get("right ramp");
+        leftRamp = hwMap.servo.get("left ramp");
 
         rightColorSensor = hwMap.colorSensor.get("right color");
 
@@ -52,6 +56,9 @@ public class Hardware_Speedy
         leftGrabber.setPosition(START_SERVO);
         rightGrabber.setPosition(START_SERVO);
         rightJewel.setPosition(1);
+        rightRamp.setPosition(0);
+        leftRamp.setPosition(0);
+
 
     }
 

@@ -1,15 +1,17 @@
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.Auto.Non_Jewel;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
+import org.firstinspires.ftc.teamcode.Hardware_Speedy;
+
 /**
  * Created by Cameron on 9/15/17.
  */
 
-@Autonomous(name="Autonomous_Speedy_Blue_Right", group="Speedy")
+@Autonomous(name="Autonomous_Speedy_Blue_Right", group="Park")
 public class Autonomous_Speedy_Blue_Right extends LinearOpMode {
 
     Hardware_Speedy robot = new Hardware_Speedy();
@@ -59,10 +61,11 @@ public class Autonomous_Speedy_Blue_Right extends LinearOpMode {
         robot.liftMotor.setPower(0);
 
         encoderDrive(DRIVE_SPEED, -25, -25, 5.0);
-        encoderDrive(DRIVE_SPEED, 12, -12, 4.0);
-        encoderDrive(DRIVE_SPEED, 12, 12, 5.0);
+        encoderDrive(DRIVE_SPEED, 15, -15, 4.0);
+        encoderDrive(DRIVE_SPEED, 15, 15, 5.0);
         robot.rightGrabber.setPosition(0);
         robot.leftGrabber.setPosition(0);
+        sleep(500);
         encoderDrive(DRIVE_SPEED, -2, -2, 5.0);
 
         telemetry.addData("Path", "Complete");

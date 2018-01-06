@@ -1,15 +1,17 @@
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.Auto.Jewel_Auto;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
+import org.firstinspires.ftc.teamcode.Hardware_Speedy;
+
 /**
  * Created by kpingel on 11/10/17.
  */
-@Autonomous(name="Test_Jewel_Autonomous", group="Speedy")
-public class Test_Jewel_Autonomous extends LinearOpMode {
+@Autonomous(name="Blue_Left_Jewel_Autonomous", group="Jewel")
+public class Blue_Left_Jewel_Autonomous extends LinearOpMode {
 
     Hardware_Speedy robot = new Hardware_Speedy();
     private ElapsedTime runtime = new ElapsedTime();
@@ -56,12 +58,12 @@ public class Test_Jewel_Autonomous extends LinearOpMode {
         waitForStart();
 
         //path starts here
-//
-//        robot.leftGrabber.setPosition(.22);
-//        robot.rightGrabber.setPosition(.27);
-//        robot.liftMotor.setPower(.3);
-//        sleep(1000);
-//        robot.liftMotor.setPower(0);
+
+        robot.leftGrabber.setPosition(.22);
+        robot.rightGrabber.setPosition(.27);
+        robot.liftMotor.setPower(.3);
+        sleep(1000);
+        robot.liftMotor.setPower(0);
 
         robot.rightJewel.setPosition(.9);
         robot.rightJewel.setPosition(.8);
@@ -69,10 +71,10 @@ public class Test_Jewel_Autonomous extends LinearOpMode {
         robot.rightJewel.setPosition(.6);
         robot.rightJewel.setPosition(.5);
         robot.rightJewel.setPosition(.4);
-        robot.rightJewel.setPosition(.34);
-        sleep(4000);
+        robot.rightJewel.setPosition(.3);
+        sleep(2000);
 
-        while (opModeIsActive() && robot.rightColorSensor.blue() < 2 && robot.rightMotor.getCurrentPosition() < 10) {
+        while (opModeIsActive() && robot.rightColorSensor.blue() < 2 && robot.rightMotor.getCurrentPosition() < 10 ) {
             robot.rightColorSensor.enableLed(LEDState);
 
             telemetry.addData("2 Clear", robot.rightColorSensor.alpha());
@@ -83,24 +85,40 @@ public class Test_Jewel_Autonomous extends LinearOpMode {
             telemetry.update();
 
             if (robot.rightColorSensor.red() > 2) {
-                encoderDrive(DRIVE_SPEED, -4, -4, 4);
+                encoderDrive(DRIVE_SPEED, 2, -2, 4);
                 sleep(500);
                 robot.rightJewel.setPosition(1);
                 sleep(500);
-                encoderDrive(DRIVE_SPEED, 4, 4, 4);
+                encoderDrive(DRIVE_SPEED, -2, 2, 4.0);
             }
         }
 
         if (robot.rightColorSensor.blue() > robot.rightColorSensor.red() && robot.rightColorSensor.blue() > robot.rightColorSensor.green())
         {
-            encoderDrive(DRIVE_SPEED, 4, 4, 4);
+            encoderDrive(DRIVE_SPEED, -2, 2,
+                    4);
             sleep(500);
             robot.rightJewel.setPosition(1);
             sleep(500);
-            encoderDrive(DRIVE_SPEED, -4, -4, 4);
+            encoderDrive(DRIVE_SPEED, 2, -2, 4);
         }
 
+        encoderDrive(DRIVE_SPEED, -27, -27, 5.0);
+        encoderDrive(DRIVE_SPEED, -11, 11, 4.0);
+        encoderDrive(DRIVE_SPEED, 7.5, 7.5, 5.0);
+        encoderDrive(DRIVE_SPEED, -11, 11, 4.0);
+        encoderDrive(DRIVE_SPEED, 10, 10, 5.0);
+        robot.leftGrabber.setPosition(0);
+        robot.rightGrabber.setPosition(0);
+        sleep(500);
+        encoderDrive(DRIVE_SPEED, -2, -2, 5.0);
+
+        telemetry.addData("Path", "Complete");
+        telemetry.update();
+
     }
+
+
 
 
     public void encoderDrive(double speed,

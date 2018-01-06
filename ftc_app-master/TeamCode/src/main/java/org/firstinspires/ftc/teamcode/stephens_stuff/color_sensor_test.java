@@ -28,19 +28,19 @@ Support is available by emailing support@modernroboticsinc.com.
         import com.qualcomm.robotcore.hardware.DeviceInterfaceModule;
         import com.qualcomm.robotcore.hardware.TouchSensor;
 
-@TeleOp(name = "color", group = "color")
+@TeleOp(name = "Color Sensor Test", group = "Test")
 //@Disabled
 public class color_sensor_test extends LinearOpMode {
     ColorSensor colorSensor;//Instance of ColorSensor - for reading color    `1
     DeviceInterfaceModule CDI;//Instance of DeviceInterfaceModule - for showing a red or blue LED
-    TouchSensor touch; //Instance of TouchSensor - for changing color sensor mode
+   // TouchSensor touch; //Instance of TouchSensor - for changing color sensor mode
 
 
     @Override
     public void runOpMode() throws InterruptedException {
 //the below three lines set up the configuration file
-        colorSensor = hardwareMap.colorSensor.get("color 1");
-        touch = hardwareMap.touchSensor.get("t");
+        colorSensor = hardwareMap.colorSensor.get("right color");
+     //   touch = hardwareMap.touchSensor.get("t");
         CDI = hardwareMap.deviceInterfaceModule.get("Device Interface Module 1");
 
 
@@ -49,7 +49,7 @@ public class color_sensor_test extends LinearOpMode {
 
         waitForStart(); //Wait for the play button to be pressed
 
-        colorSensor.enableLed(LEDState); //Set the mode of the LED; Active = true, Passive = false
+        colorSensor.enableLed(true); //Set the mode of the LED; Active = true, Passive = false
 //Active - For measuring reflected light. Cancels out ambient light
 //Passive - For measuring ambient light, eg. the FTC Color Beacon
 
@@ -57,16 +57,16 @@ public class color_sensor_test extends LinearOpMode {
 
         while (opModeIsActive()) { //Main loop of program
 
-            if (!touchState && touch.isPressed()) {
-                //If the touch sensor is just now being pressed (was not pressed last time through the loop but now is)
-// touchState = true;                  
-//  //Change touch state to true because the touch sensor is now pressed
-                LEDState = !LEDState; //Change the LEDState to the opposite of what it was
-                colorSensor.enableLed(LEDState);//Set the mode of the color sensor using LEDState
-            }
-            if (!touch.isPressed()) {//If the touch sensor is now pressed
-                touchState = false; //Set the touchState to false to indicate that the touch sensor was released
-            }
+//            if (!touchState && touch.isPressed()) {
+//                //If the touch sensor is just now being pressed (was not pressed last time through the loop but now is)
+//// touchState = true;                  
+////  //Change touch state to true because the touch sensor is now pressed
+//                LEDState = !LEDState; //Change the LEDState to the opposite of what it was
+//                colorSensor.enableLed(LEDState);//Set the mode of the color sensor using LEDState
+//            }
+//            if (!touch.isPressed()) {//If the touch sensor is now pressed
+//                touchState = false; //Set the touchState to false to indicate that the touch sensor was released
+//            }
 //The below two if() statements ensure that the mode of the color sensor is changed only once each time the touch sensor is pressed.
 //The mode of the color sensor is saved to the sensor's long term memory. Just like flash drives, the long term memory has a life time in the 10s or 100s of thousands of cycles.
 // This seems like a lot but if your program wrote to the long term memory every time though the main loop, it would shorten the life of your sensor.
