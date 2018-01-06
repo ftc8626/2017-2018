@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.Tests.Auto_Test;
 
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
@@ -9,68 +10,46 @@ import org.firstinspires.ftc.teamcode.Hardware_Speedy;
  * Created by stephenmcconnell on 1/5/18.
  */
 
-@TeleOp(name="Teleop Drive Motor Test", group="Teleop Test")
-public class Drive_Motor_Auto_test extends OpMode {
+@TeleOp(name="Auto Drive Motor Test", group="Auto Test")
+public class Drive_Motor_Auto_test extends LinearOpMode {
     Hardware_Speedy robot = new Hardware_Speedy();
 
-    boolean PRECISE_DRIVE = false;
-    double left = 0;
-    double right = 0;
+    double left = -.9 * .2;
+    double right = -9 * .2;
 
     @Override
-    public void init() {
+    public void runOpMode() {
         robot.init(hardwareMap);
 
         telemetry.addData("Say", "I think, therefore I am.");
-        //       updateTelemetry(telemetry);
+        updateTelemetry(telemetry);
 
-    }
+        waitForStart();
 
-    @Override
-    public void init_loop() {
-
-    }
-
-    @Override
-    public void start() {
-
-    }
-
-    @Override
-    public void loop() {
-
-        if(PRECISE_DRIVE == false){
-            left = -.9 * gamepad1.left_stick_y;
-            right = -.9 * gamepad1.right_stick_y;}
-        else if(PRECISE_DRIVE == true){
-            left = -.2 * (gamepad1.left_stick_y);
-            right = -.2 * (gamepad1.right_stick_y);}
-
-
-        //toggle precise drive
-        //right trigger = sneaky
-        //left trigger = speedy
-        if(gamepad1.right_trigger > 0 && PRECISE_DRIVE == false)
-            PRECISE_DRIVE = true;
-        else if (gamepad1.left_trigger > 0 && PRECISE_DRIVE == true)
-            PRECISE_DRIVE = false;
+        sleep(1000);
+        telemetry.addData("Ramp", "Speed: Fast");
+        updateTelemetry(telemetry);
 
         robot.leftMotor.setPower(left);
         robot.rightMotor.setPower(right);
 
-        if(gamepad1.guide){
-            robot.leftGrabber.setPosition(.2);
-            robot.rightGrabber.setPosition(.2);
-            robot.rightJewel.setPosition(1);
-            robot.rightRamp.setPosition(0);
-            robot.leftRamp.setPosition(0);
-        }
+        sleep(500);
 
-        telemetry.addData("left", "%.2f", left);
-        telemetry.addData("right", "%.2f", right);
+        robot.leftMotor.setPower(0);
+        robot.rightMotor.setPower(0);
+
+        sleep(2000);
+        left = -.2 * left;
+        right = -.2 * right;
+        telemetry.addData("Ramp", "Speed: Slow");
         updateTelemetry(telemetry);
-    }
 
-    @Override
-    public void stop() {}
+        robot.leftMotor.setPower(left);
+        robot.rightMotor.setPower(right);
+
+        sleep(500);
+
+        robot.leftMotor.setPower(0);
+        robot.rightMotor.setPower(0);
+    }
 }

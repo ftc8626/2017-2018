@@ -11,13 +11,9 @@ import org.firstinspires.ftc.teamcode.Hardware_Speedy;
  * Created by stephenmcconnell on 1/5/18.
  */
 
-@Autonomous(name="Teleop Glyph Lift Test", group="Teleop Test")
+@Autonomous(name="Auto Glyph Lift Test", group="Auto Test")
 public class Glyph_Lift_Auto_Test extends LinearOpMode {
     Hardware_Speedy robot = new Hardware_Speedy();
-
-    boolean PRECISE_DRIVE = false;
-    double left = 0;
-    double right = 0;
 
     @Override
     public void runOpMode() {

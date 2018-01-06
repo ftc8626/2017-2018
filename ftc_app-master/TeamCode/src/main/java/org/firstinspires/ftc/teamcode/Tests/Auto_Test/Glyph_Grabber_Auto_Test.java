@@ -1,66 +1,44 @@
 package org.firstinspires.ftc.teamcode.Tests.Auto_Test;
 
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.Hardware_Speedy;
 
+import static java.lang.Thread.sleep;
+
 /**
  * Created by stephenmcconnell on 1/5/18.
  */
 
-@TeleOp(name="Teleop Glyph Grabber Test", group="Teleop Test")
-public class Glyph_Grabber_Auto_Test extends OpMode{
+@Autonomous(name="Auto Glyph Grabber Test", group="Auto Test")
+public class Glyph_Grabber_Auto_Test extends LinearOpMode {
     Hardware_Speedy robot = new Hardware_Speedy();
 
-    boolean PRECISE_DRIVE = false;
     double left = 0;
     double right = 0;
 
     @Override
-    public void init() {
+    public void runOpMode() {
         robot.init(hardwareMap);
 
         telemetry.addData("Say", "I think, therefore I am.");
-        //       updateTelemetry(telemetry);
+        updateTelemetry(telemetry);
 
-    }
+        waitForStart();
 
-    @Override
-    public void init_loop() {
-
-    }
-
-    @Override
-    public void start() {
-
-    }
-
-    @Override
-    public void loop() {
-
-        if(gamepad1.right_bumper) {
+        while(opModeIsActive()) {
+            sleep(3000);
             robot.rightGrabber.setPosition(.27);
             robot.leftGrabber.setPosition(.22);
-        }
-        else if (gamepad1.left_bumper) {
+
+            sleep(2000);
+
             robot.rightGrabber.setPosition(0);
             robot.leftGrabber.setPosition(0);
         }
 
-        if(gamepad1.guide){
-            robot.leftGrabber.setPosition(.2);
-            robot.rightGrabber.setPosition(.2);
-            robot.rightJewel.setPosition(1);
-            robot.rightRamp.setPosition(0);
-            robot.leftRamp.setPosition(0);
-        }
-
-        telemetry.addData("left", "%.2f", left);
-        telemetry.addData("right", "%.2f", right);
-        updateTelemetry(telemetry);
     }
-
-    @Override
-    public void stop() {}
 }
