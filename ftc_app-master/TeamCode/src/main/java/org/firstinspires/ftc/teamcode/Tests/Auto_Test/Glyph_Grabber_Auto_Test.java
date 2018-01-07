@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.Tests.Auto_Test;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
@@ -14,6 +15,7 @@ import static java.lang.Thread.sleep;
  */
 
 @Autonomous(name="Auto Glyph Grabber Test", group="Auto Test")
+@Disabled
 public class Glyph_Grabber_Auto_Test extends LinearOpMode {
     Hardware_Speedy robot = new Hardware_Speedy();
 

@@ -74,7 +74,7 @@ public class Red_Right_Jewel_Autonomous extends LinearOpMode {
         robot.rightJewel.setPosition(.3);
         sleep(2000);
 
-        while (opModeIsActive() && robot.rightColorSensor.blue() < 2 && robot.rightMotor.getCurrentPosition() < 10 ) {
+        while (opModeIsActive() && robot.rightColorSensor.blue() < 2 && robot.rightMotor.getCurrentPosition() < 5 && robot.leftMotor.getCurrentPosition() < 5) {
             robot.rightColorSensor.enableLed(LEDState);
 
             telemetry.addData("2 Clear", robot.rightColorSensor.alpha());
@@ -91,6 +91,9 @@ public class Red_Right_Jewel_Autonomous extends LinearOpMode {
                 sleep(500);
                 encoderDrive(DRIVE_SPEED, 2, -2, 4.0);
             }
+//            if(robot.rightColorSensor.red()<= 2){
+//                encoderDrive(DRIVE_SPEED, 1, 1, 4);
+//            }
         }
 
         if (robot.rightColorSensor.blue() > robot.rightColorSensor.red() && robot.rightColorSensor.blue() > robot.rightColorSensor.green())
