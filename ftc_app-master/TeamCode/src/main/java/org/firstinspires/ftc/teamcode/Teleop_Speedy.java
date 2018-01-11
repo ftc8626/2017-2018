@@ -122,8 +122,8 @@ public class Teleop_Speedy extends OpMode {
            robot.leftBottomGrabber.setPosition(0.1);
         }
 
-//        robot.leftFrontMotor.setPower(left);
-//        robot.rightFrontMotor.setPower(right);
+        robot.leftFrontMotor.setPower(left);
+        robot.rightFrontMotor.setPower(right);
         robot.leftBackMotor.setPower(left);
         robot.rightBackMotor.setPower(right);
 
