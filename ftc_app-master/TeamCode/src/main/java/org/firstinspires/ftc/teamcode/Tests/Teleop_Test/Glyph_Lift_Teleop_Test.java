@@ -48,11 +48,11 @@ public class Glyph_Lift_Teleop_Test extends OpMode {
             robot.liftMotor.setPower(0);
 
         if(gamepad1.guide){
-            robot.leftGrabber.setPosition(.2);
-            robot.rightGrabber.setPosition(.2);
+            robot.leftTopGrabber.setPosition(.2);
+            robot.rightTopGrabber.setPosition(.2);
             robot.rightJewel.setPosition(1);
-            robot.rightRamp.setPosition(0);
-            robot.leftRamp.setPosition(0);
+//            robot.rightRamp.setPosition(0);
+//            robot.leftRamp.setPosition(0);
         }
 
         telemetry.addData("left", "%.2f", left);

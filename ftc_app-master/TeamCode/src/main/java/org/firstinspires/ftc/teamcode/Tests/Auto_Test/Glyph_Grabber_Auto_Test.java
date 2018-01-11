@@ -2,8 +2,6 @@ package org.firstinspires.ftc.teamcode.Tests.Auto_Test;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.eventloop.opmode.OpMode;
-import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.Hardware_Speedy;
 
@@ -31,13 +29,13 @@ public class Glyph_Grabber_Auto_Test extends LinearOpMode {
 
         while(opModeIsActive()) {
             sleep(3000);
-            robot.rightGrabber.setPosition(.27);
-            robot.leftGrabber.setPosition(.22);
+            robot.rightTopGrabber.setPosition(.27);
+            robot.leftTopGrabber.setPosition(.22);
 
             sleep(2000);
 
-            robot.rightGrabber.setPosition(0);
-            robot.leftGrabber.setPosition(0);
+            robot.rightTopGrabber.setPosition(0);
+            robot.leftTopGrabber.setPosition(0);
         }
 
     }

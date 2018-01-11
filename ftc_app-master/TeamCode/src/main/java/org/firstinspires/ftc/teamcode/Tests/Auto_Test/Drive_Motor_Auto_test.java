@@ -1,7 +1,6 @@
 package org.firstinspires.ftc.teamcode.Tests.Auto_Test;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.Hardware_Speedy;
@@ -30,13 +29,13 @@ public class Drive_Motor_Auto_test extends LinearOpMode {
         telemetry.addData("Ramp", "Speed: Fast");
         updateTelemetry(telemetry);
 
-        robot.leftMotor.setPower(left);
-        robot.rightMotor.setPower(right);
+        robot.leftFrontMotor.setPower(left);
+        robot.rightFrontMotor.setPower(right);
 
         sleep(500);
 
-        robot.leftMotor.setPower(0);
-        robot.rightMotor.setPower(0);
+        robot.leftFrontMotor.setPower(0);
+        robot.rightFrontMotor.setPower(0);
 
         sleep(2000);
         left = -.2 * left;
@@ -44,12 +43,12 @@ public class Drive_Motor_Auto_test extends LinearOpMode {
         telemetry.addData("Ramp", "Speed: Slow");
         updateTelemetry(telemetry);
 
-        robot.leftMotor.setPower(left);
-        robot.rightMotor.setPower(right);
+        robot.leftFrontMotor.setPower(left);
+        robot.rightFrontMotor.setPower(right);
 
         sleep(500);
 
-        robot.leftMotor.setPower(0);
-        robot.rightMotor.setPower(0);
+        robot.leftFrontMotor.setPower(0);
+        robot.rightFrontMotor.setPower(0);
     }
 }

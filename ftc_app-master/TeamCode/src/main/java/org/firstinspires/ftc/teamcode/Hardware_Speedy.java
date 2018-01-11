@@ -2,7 +2,6 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 
@@ -12,14 +11,18 @@ import com.qualcomm.robotcore.hardware.Servo;
 
 public class Hardware_Speedy
 {
-    public DcMotor leftMotor = null;
-    public DcMotor rightMotor = null;
+    public DcMotor leftFrontMotor = null;
+    public DcMotor rightFrontMotor = null;
+    public DcMotor leftBackMotor = null;
+    public DcMotor rightBackMotor = null;
     public DcMotor liftMotor = null;
-    public Servo leftGrabber = null;
-    public Servo rightGrabber = null;
+    public Servo leftTopGrabber = null;
+    public Servo rightTopGrabber = null;
+    public Servo leftBottomGrabber = null;
+    public Servo rightBottomGrabber = null;
     public Servo rightJewel = null;
-    public Servo rightRamp = null;
-    public Servo leftRamp = null;
+//    public Servo rightRamp = null;
+//    public Servo leftRamp = null;
     public ColorSensor rightColorSensor;
 
 
@@ -33,31 +36,44 @@ public class Hardware_Speedy
     public void init(HardwareMap ahwMap) {
         hwMap = ahwMap;
 
-        leftMotor = hwMap.dcMotor.get("left motor");
-        rightMotor = hwMap.dcMotor.get("right motor");
+        leftFrontMotor = hwMap.dcMotor.get("left front motor");
+        rightFrontMotor = hwMap.dcMotor.get("right front motor");
+        leftBackMotor = hwMap.dcMotor.get("left back motor");
+        rightBackMotor = hwMap.dcMotor.get("right back motor");
         liftMotor = hwMap.dcMotor.get("lift motor");
 
-        leftGrabber = hwMap.servo.get("left grabber");
-        rightGrabber = hwMap.servo.get("right grabber");
+        leftTopGrabber = hwMap.servo.get("left top grabber");
+        rightTopGrabber = hwMap.servo.get("right top grabber");
+        leftBottomGrabber = hwMap.servo.get("left bottom grabber");
+        rightBottomGrabber = hwMap.servo.get("right bottom grabber");
         rightJewel = hwMap.servo.get("right jewel");
-        rightRamp = hwMap.servo.get("right ramp");
-        leftRamp = hwMap.servo.get("left ramp");
+//        rightRamp = hwMap.servo.get("right ramp");
+//        leftRamp = hwMap.servo.get("left ramp");
 
         rightColorSensor = hwMap.colorSensor.get("right color");
 
-        leftMotor.setDirection(DcMotor.Direction.REVERSE);
-        rightMotor.setDirection(DcMotor.Direction.FORWARD);
+        leftFrontMotor.setDirection(DcMotor.Direction.REVERSE);
+        rightFrontMotor.setDirection(DcMotor.Direction.FORWARD);
+        leftBackMotor.setDirection(DcMotor.Direction.REVERSE);
+        rightBackMotor.setDirection(DcMotor.Direction.FORWARD);
         liftMotor.setDirection(DcMotor.Direction.FORWARD);
 
-        leftMotor.setPower(0);
-        rightMotor.setPower(0);
+        leftFrontMotor.setPower(0);
+        rightFrontMotor.setPower(0);
+        leftBackMotor.setPower(0);
+        rightBackMotor.setPower(0);
         liftMotor.setPower(0);
 
-        leftGrabber.setPosition(START_SERVO);
-        rightGrabber.setPosition(START_SERVO);
+
+        leftTopGrabber.setDirection(Servo.Direction.REVERSE);
+        leftTopGrabber.setPosition(START_SERVO);
+        rightTopGrabber.setPosition(START_SERVO);
+        leftBottomGrabber.setDirection(Servo.Direction.REVERSE);
+        leftBottomGrabber.setPosition(START_SERVO);
+        rightBottomGrabber.setPosition(START_SERVO);
         rightJewel.setPosition(1);
-        rightRamp.setPosition(0);
-        leftRamp.setPosition(0);
+//        rightRamp.setPosition(0);
+//        leftRamp.setPosition(0);
 
 
     }

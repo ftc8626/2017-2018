@@ -110,23 +110,31 @@ public class Teleop_Speedy extends OpMode {
         //left bumper = open
 
        if(gamepad1.right_bumper) {
-            robot.rightGrabber.setPosition(.27);
-            robot.leftGrabber.setPosition(.22);
-        }
+            robot.rightTopGrabber.setPosition(.27);
+            robot.leftTopGrabber.setPosition(.22);
+           robot.rightBottomGrabber.setPosition(.27);
+           robot.leftBottomGrabber.setPosition(.22);
+       }
         else if (gamepad1.left_bumper) {
-            robot.rightGrabber.setPosition(0);
-            robot.leftGrabber.setPosition(0);
+            robot.rightTopGrabber.setPosition(0.1);
+            robot.leftTopGrabber.setPosition(0.1);
+           robot.rightBottomGrabber.setPosition(0.1);
+           robot.leftBottomGrabber.setPosition(0.1);
         }
 
-        robot.leftMotor.setPower(left);
-        robot.rightMotor.setPower(right);
+//        robot.leftFrontMotor.setPower(left);
+//        robot.rightFrontMotor.setPower(right);
+        robot.leftBackMotor.setPower(left);
+        robot.rightBackMotor.setPower(right);
 
         if(gamepad1.guide){
-            robot.leftGrabber.setPosition(.2);
-            robot.rightGrabber.setPosition(.2);
+            robot.leftTopGrabber.setPosition(.2);
+            robot.rightTopGrabber.setPosition(.2);
+            robot.leftBottomGrabber.setPosition(.2);
+            robot.rightBottomGrabber.setPosition(.2);
             robot.rightJewel.setPosition(1);
-            robot.rightRamp.setPosition(0);
-            robot.leftRamp.setPosition(0);
+//            robot.rightRamp.setPosition(0);
+//            robot.leftRamp.setPosition(0);
         }
 
         telemetry.addData("left", "%.2f", left);

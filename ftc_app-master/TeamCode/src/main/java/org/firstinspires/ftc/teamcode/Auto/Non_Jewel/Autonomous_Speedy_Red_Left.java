@@ -39,23 +39,23 @@ public class Autonomous_Speedy_Red_Left extends LinearOpMode {
         telemetry.addData("Status", "Resetting Encoders");
         telemetry.update();
 
-        robot.leftMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        robot.rightMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        robot.leftFrontMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        robot.rightFrontMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
-        robot.leftMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        robot.rightMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        robot.leftFrontMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        robot.rightFrontMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
         telemetry.addData("Path0", "Starting at %7d :%7d",
-                robot.leftMotor.getCurrentPosition(),
-                robot.rightMotor.getCurrentPosition());
+                robot.leftFrontMotor.getCurrentPosition(),
+                robot.rightFrontMotor.getCurrentPosition());
         telemetry.update();
 
         waitForStart();
 
         //path starts here
 
-        robot.leftGrabber.setPosition(.22);
-        robot.rightGrabber.setPosition(.27);
+        robot.leftTopGrabber.setPosition(.22);
+        robot.rightTopGrabber.setPosition(.27);
         robot.liftMotor.setPower(.3);
         sleep(1000);
         robot.liftMotor.setPower(0);
@@ -65,16 +65,16 @@ public class Autonomous_Speedy_Red_Left extends LinearOpMode {
 //        encoderDrive(DRIVE_SPEED, 7.5, 7.5, 5.0);
 //        encoderDrive(DRIVE_SPEED, -11, 11, 4.0);
 //        encoderDrive(DRIVE_SPEED, 10, 10, 5.0);
-//        robot.leftGrabber.setPosition(0);
-//        robot.rightGrabber.setPosition(0);
+//        robot.leftTopGrabber.setPosition(0);
+//        robot.rightTopGrabber.setPosition(0);
 //        sleep(500);
 //        encoderDrive(DRIVE_SPEED, -2, -2, 5.0);
 
        encoderDrive(DRIVE_SPEED, 30, 30, 5.0);
         encoderDrive(DRIVE_SPEED, 10, -10, 4.0);
         encoderDrive(DRIVE_SPEED, 17, 17, 5.0);
-        robot.leftGrabber.setPosition(0);
-        robot.rightGrabber.setPosition(0);
+        robot.leftTopGrabber.setPosition(0);
+        robot.rightTopGrabber.setPosition(0);
         sleep(500);
         encoderDrive(DRIVE_SPEED, -2, -2, 5.0);
 
@@ -91,26 +91,26 @@ public class Autonomous_Speedy_Red_Left extends LinearOpMode {
 
         if (opModeIsActive()) {
 
-            newLeftTarget = robot.leftMotor.getCurrentPosition() + (int) (leftInches * ENCODER_DRIVE);
-            newRightTarget = robot.rightMotor.getCurrentPosition() + (int) (rightInches * ENCODER_DRIVE);
-            robot.leftMotor.setTargetPosition(newLeftTarget);
-            robot.rightMotor.setTargetPosition(newRightTarget);
+            newLeftTarget = robot.leftFrontMotor.getCurrentPosition() + (int) (leftInches * ENCODER_DRIVE);
+            newRightTarget = robot.rightFrontMotor.getCurrentPosition() + (int) (rightInches * ENCODER_DRIVE);
+            robot.leftFrontMotor.setTargetPosition(newLeftTarget);
+            robot.rightFrontMotor.setTargetPosition(newRightTarget);
 
-            robot.leftMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-            robot.rightMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            robot.leftFrontMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            robot.rightFrontMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
             runtime.reset();
-            robot.leftMotor.setPower(Math.abs(speed));
-            robot.rightMotor.setPower(Math.abs(speed));
+            robot.leftFrontMotor.setPower(Math.abs(speed));
+            robot.rightFrontMotor.setPower(Math.abs(speed));
 
             while (opModeIsActive() &&
                     (runtime.seconds() < timeoutS) &&
-                    (robot.leftMotor.isBusy() && robot.rightMotor.isBusy())) {
+                    (robot.leftFrontMotor.isBusy() && robot.rightFrontMotor.isBusy())) {
 
                 telemetry.addData("Path1", "Running to %7d :%7d", newLeftTarget, newRightTarget);
                 telemetry.addData("Path2", "Running at %7d :%7d",
-                        robot.leftMotor.getCurrentPosition(),
-                        robot.rightMotor.getCurrentPosition());
+                        robot.leftFrontMotor.getCurrentPosition(),
+                        robot.rightFrontMotor.getCurrentPosition());
                 telemetry.update();
             }
         }
