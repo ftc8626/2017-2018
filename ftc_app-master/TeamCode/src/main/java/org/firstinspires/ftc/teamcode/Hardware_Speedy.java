@@ -26,7 +26,7 @@ public class Hardware_Speedy
     public ColorSensor rightColorSensor;
 
 
-    public static final double START_SERVO = .2;
+    public static final double START_SERVO = .25;
 
     HardwareMap hwMap = null;
 
@@ -70,7 +70,7 @@ public class Hardware_Speedy
         rightTopGrabber.setPosition(START_SERVO);
         leftBottomGrabber.setDirection(Servo.Direction.REVERSE);
         leftBottomGrabber.setPosition(START_SERVO);
-        rightBottomGrabber.setPosition(START_SERVO);
+        rightBottomGrabber.setPosition(.27);
         rightJewel.setPosition(1);
 //        rightRamp.setPosition(0);
 //        leftRamp.setPosition(0);

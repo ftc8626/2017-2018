@@ -13,7 +13,7 @@ public class Teleop_Speedy extends OpMode {
     static final int    CYCLE_MS    =   50;     // period of each cycle
     static final double MAX_FWD     =  1.0;     // Maximum FWD power applied to motor
     static final double MAX_REV     = -1.0;     // Maximum REV power applied to motor
-    boolean PRECISE_DRIVE = false;
+    boolean PRECISE_DRIVE = true;
     double left = 0;
     double right = 0;
 
@@ -100,26 +100,26 @@ public class Teleop_Speedy extends OpMode {
 */
         //dpad = lift
         if(gamepad1.dpad_up)
-            robot.liftMotor.setPower(.3);
+            robot.liftMotor.setPower(.5);
         else if (gamepad1.dpad_down)
-            robot.liftMotor.setPower(-.3);
+            robot.liftMotor.setPower(-.5);
         else
             robot.liftMotor.setPower(0);
 
-        //right bumper = closed
-        //left bumper = open
+        //left bumper = closed
+        //right bumper = open
 
        if(gamepad1.right_bumper) {
             robot.rightTopGrabber.setPosition(.27);
             robot.leftTopGrabber.setPosition(.22);
-           robot.rightBottomGrabber.setPosition(.27);
-           robot.leftBottomGrabber.setPosition(.22);
+           robot.rightBottomGrabber.setPosition(.33);
+           robot.leftBottomGrabber.setPosition(.3);
        }
         else if (gamepad1.left_bumper) {
             robot.rightTopGrabber.setPosition(0.1);
             robot.leftTopGrabber.setPosition(0.1);
-           robot.rightBottomGrabber.setPosition(0.1);
-           robot.leftBottomGrabber.setPosition(0.1);
+           robot.rightBottomGrabber.setPosition(0.15);
+           robot.leftBottomGrabber.setPosition(0.15);
         }
 
         robot.leftFrontMotor.setPower(left);
@@ -128,10 +128,10 @@ public class Teleop_Speedy extends OpMode {
         robot.rightBackMotor.setPower(right);
 
         if(gamepad1.guide){
-            robot.leftTopGrabber.setPosition(.2);
-            robot.rightTopGrabber.setPosition(.2);
-            robot.leftBottomGrabber.setPosition(.2);
-            robot.rightBottomGrabber.setPosition(.2);
+            robot.leftTopGrabber.setPosition(.1);
+            robot.rightTopGrabber.setPosition(.1);
+            robot.leftBottomGrabber.setPosition(.15);
+            robot.rightBottomGrabber.setPosition(.15);
             robot.rightJewel.setPosition(1);
 //            robot.rightRamp.setPosition(0);
 //            robot.leftRamp.setPosition(0);

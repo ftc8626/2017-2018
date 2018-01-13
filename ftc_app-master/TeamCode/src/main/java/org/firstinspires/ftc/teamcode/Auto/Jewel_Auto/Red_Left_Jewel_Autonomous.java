@@ -44,6 +44,9 @@ public class Red_Left_Jewel_Autonomous extends LinearOpMode {
         telemetry.addData("Status", "Resetting Encoders");
         telemetry.update();
 
+        robot.rightBackMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
+        robot.leftBackMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
+
         robot.leftFrontMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         robot.rightFrontMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
@@ -59,10 +62,10 @@ public class Red_Left_Jewel_Autonomous extends LinearOpMode {
 
         //path starts here
 
-        robot.leftTopGrabber.setPosition(.22);
-        robot.rightTopGrabber.setPosition(.27);
+        robot.leftBottomGrabber.setPosition(.1);
+        robot.rightBottomGrabber.setPosition(.1);
         robot.liftMotor.setPower(.3);
-        sleep(1000);
+        sleep(800);
         robot.liftMotor.setPower(0);
 
         robot.rightJewel.setPosition(.9);
@@ -74,7 +77,7 @@ public class Red_Left_Jewel_Autonomous extends LinearOpMode {
         robot.rightJewel.setPosition(.3);
         sleep(2000);
 
-        while (opModeIsActive() && robot.rightColorSensor.blue() < 2 && robot.rightFrontMotor.getCurrentPosition() < 10 ) {
+        while (opModeIsActive() && robot.rightColorSensor.blue() < 1 && robot.rightColorSensor.red() < 1 ) {
             robot.rightColorSensor.enableLed(LEDState);
 
             telemetry.addData("2 Clear", robot.rightColorSensor.alpha());
@@ -84,30 +87,37 @@ public class Red_Left_Jewel_Autonomous extends LinearOpMode {
             telemetry.addData("6 Hue", hsvValues[0]);
             telemetry.update();
 
-            if (robot.rightColorSensor.red() > 2) {
-                encoderDrive(DRIVE_SPEED, -2, 2, 4);
+           /* if (robot.rightColorSensor.red() >= 1) {
+                encoderDrive(DRIVE_SPEED, 2, -2, 4);
                 sleep(500);
                 robot.rightJewel.setPosition(1);
                 sleep(500);
-                encoderDrive(DRIVE_SPEED, 2, -2, 4.0);
-            }
+                encoderDrive(DRIVE_SPEED, -2, 2, 4.0);
+            }*/
         }
 
-        if (robot.rightColorSensor.blue() > robot.rightColorSensor.red() && robot.rightColorSensor.blue() > robot.rightColorSensor.green())
-        {
-            encoderDrive(DRIVE_SPEED, 2, -2,
-                    4);
+        if (robot.rightColorSensor.blue() > robot.rightColorSensor.red() /*&& robot.rightColorSensor.blue() > robot.rightColorSensor.green()*/) {
+            encoderDrive(DRIVE_SPEED, 2, -2, 4);
             sleep(500);
             robot.rightJewel.setPosition(1);
             sleep(500);
-            encoderDrive(DRIVE_SPEED, -2, 2, 4);
+            encoderDrive(DRIVE_SPEED, -1, 1, 4);
         }
 
-        encoderDrive(DRIVE_SPEED, 30, 30, 5.0);
-        encoderDrive(DRIVE_SPEED, 10, -10, 4.0);
+        if (robot.rightColorSensor.red() > robot.rightColorSensor.blue()/* && robot.rightColorSensor.red() > robot.rightColorSensor.green()*/) {
+            encoderDrive(DRIVE_SPEED, -2, 2, 4);
+            sleep(500);
+            robot.rightJewel.setPosition(1);
+            sleep(500);
+            encoderDrive(DRIVE_SPEED, 2, -2, 4);
+        }
+
+        sleep(500);
+        encoderDrive(.4, 30, 30, 5.0);
+        encoderDrive(DRIVE_SPEED, 7, -7, 4.0);
         encoderDrive(DRIVE_SPEED, 17, 17, 5.0);
-        robot.leftTopGrabber.setPosition(0);
-        robot.rightTopGrabber.setPosition(0);
+        robot.leftBottomGrabber.setPosition(.35);
+        robot.rightBottomGrabber.setPosition(.38);
         sleep(500);
         encoderDrive(DRIVE_SPEED, -2, -2, 5.0);
 
