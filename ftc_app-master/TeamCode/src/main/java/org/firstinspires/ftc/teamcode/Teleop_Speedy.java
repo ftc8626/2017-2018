@@ -100,9 +100,9 @@ public class Teleop_Speedy extends OpMode {
 */
         //dpad = lift
         if(gamepad1.dpad_up)
-            robot.liftMotor.setPower(.5);
+            robot.liftMotor.setPower(.9);
         else if (gamepad1.dpad_down)
-            robot.liftMotor.setPower(-.5);
+            robot.liftMotor.setPower(-.9);
         else
             robot.liftMotor.setPower(0);
 

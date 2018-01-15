@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.Auto.Non_Jewel;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
@@ -12,6 +13,7 @@ import org.firstinspires.ftc.teamcode.Hardware_Speedy;
  */
 
 @Autonomous(name="Autonomous_Speedy_Red_Right", group="Park")
+@Disabled
 public class Autonomous_Speedy_Red_Right extends LinearOpMode {
 
     Hardware_Speedy robot = new Hardware_Speedy();

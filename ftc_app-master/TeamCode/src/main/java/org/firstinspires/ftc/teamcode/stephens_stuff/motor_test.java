@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.stephens_stuff;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
@@ -11,6 +12,7 @@ import org.firstinspires.ftc.teamcode.Hardware_Speedy;
  */
 
 @Autonomous(name="Motor_Test", group="Test")
+@Disabled
 public class motor_test extends LinearOpMode{
     Hardware_Speedy robot = new Hardware_Speedy();
     private ElapsedTime runtime = new ElapsedTime();

@@ -65,7 +65,7 @@ public class Blue_Right_Jewel_Autonomous extends LinearOpMode {
         robot.leftBottomGrabber.setPosition(.1);
         robot.rightBottomGrabber.setPosition(.1);
         robot.liftMotor.setPower(.3);
-        sleep(800);
+        sleep(1000);
         robot.liftMotor.setPower(0);
 
         robot.rightJewel.setPosition(.9);
@@ -78,7 +78,7 @@ public class Blue_Right_Jewel_Autonomous extends LinearOpMode {
         sleep(2000);
 
 //        while (opModeIsActive() && robot.rightColorSensor.blue() < 1 && robot.rightFrontMotor.getCurrentPosition() < 10 ) {
-        while (opModeIsActive() && robot.rightColorSensor.blue() < 1 && robot.rightColorSensor.red() < 1 ) {
+        while (opModeIsActive() && robot.rightColorSensor.blue() < 1 && robot.rightColorSensor.red() < 1 && getRuntime() < 10) {
             robot.rightColorSensor.enableLed(LEDState);
 
             telemetry.addData("2 Clear", robot.rightColorSensor.alpha());
@@ -86,6 +86,7 @@ public class Blue_Right_Jewel_Autonomous extends LinearOpMode {
             telemetry.addData("4 Green", robot.rightColorSensor.green());
             telemetry.addData("5 Blue ", robot.rightColorSensor.blue());
             telemetry.addData("6 Hue", hsvValues[0]);
+            telemetry.addData("time", getRuntime());
             telemetry.update();
 
            /* if (robot.rightColorSensor.red() >= 1) {
@@ -113,13 +114,16 @@ public class Blue_Right_Jewel_Autonomous extends LinearOpMode {
             encoderDrive(DRIVE_SPEED, -2, 2, 4);
         }
 
+        robot.rightJewel.setPosition(1);
         encoderDrive(.4, -31, -31, 5.0);
         encoderDrive(DRIVE_SPEED, 17, -17, 4.0);
         encoderDrive(DRIVE_SPEED, 15, 15, 5.0);
-        robot.leftBottomGrabber.setPosition(.35);
-        robot.rightBottomGrabber.setPosition(.38);
+        robot.leftBottomGrabber.setPosition(.38);
+        robot.rightBottomGrabber.setPosition(.41);
         sleep(500);
         encoderDrive(DRIVE_SPEED, -2, -2, 5.0);
+        robot.leftBottomGrabber.setPosition(.5);
+        robot.rightBottomGrabber.setPosition(.53);
 
         telemetry.addData("Path", "Complete");
         telemetry.update();

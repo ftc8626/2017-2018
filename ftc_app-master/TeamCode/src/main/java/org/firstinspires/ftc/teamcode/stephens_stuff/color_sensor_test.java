@@ -29,7 +29,7 @@ Support is available by emailing support@modernroboticsinc.com.
         import com.qualcomm.robotcore.hardware.TouchSensor;
 
 @TeleOp(name = "Color Sensor Test", group = "Test")
-//@Disabled
+@Disabled
 public class color_sensor_test extends LinearOpMode {
     ColorSensor colorSensor;//Instance of ColorSensor - for reading color    `1
     DeviceInterfaceModule CDI;//Instance of DeviceInterfaceModule - for showing a red or blue LED

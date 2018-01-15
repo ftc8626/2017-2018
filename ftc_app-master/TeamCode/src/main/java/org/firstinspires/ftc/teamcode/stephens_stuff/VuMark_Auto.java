@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode.stephens_stuff;
 
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
@@ -12,6 +13,7 @@ import org.firstinspires.ftc.teamcode.Hardware_Speedy;
  * Created by Stuff on 10/13/17.
  */
 @Autonomous(name = "VuMark Test", group = "Test")
+@Disabled
 public class VuMark_Auto extends LinearOpMode{
     Hardware_Speedy robot = new Hardware_Speedy();
 

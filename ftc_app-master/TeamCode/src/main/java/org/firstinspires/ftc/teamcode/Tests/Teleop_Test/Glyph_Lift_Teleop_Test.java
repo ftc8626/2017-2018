@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.Tests.Teleop_Test;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
@@ -10,6 +11,7 @@ import org.firstinspires.ftc.teamcode.Hardware_Speedy;
  */
 
 @TeleOp(name="Teleop Glyph Lift Test", group="Teleop Test")
+@Disabled
 public class Glyph_Lift_Teleop_Test extends OpMode {
     Hardware_Speedy robot = new Hardware_Speedy();
 

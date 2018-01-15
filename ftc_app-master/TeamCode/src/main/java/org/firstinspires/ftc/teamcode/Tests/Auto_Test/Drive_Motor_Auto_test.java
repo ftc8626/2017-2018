@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.Tests.Auto_Test;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
@@ -10,6 +11,7 @@ import org.firstinspires.ftc.teamcode.Hardware_Speedy;
  */
 
 @TeleOp(name="Auto Drive Motor Test", group="Auto Test")
+@Disabled
 public class Drive_Motor_Auto_test extends LinearOpMode {
     Hardware_Speedy robot = new Hardware_Speedy();
 
