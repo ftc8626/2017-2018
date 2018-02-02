@@ -2,8 +2,6 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
-import com.qualcomm.robotcore.hardware.GyroSensor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 
@@ -18,18 +16,15 @@ public class Hardware_Speedy
     public DcMotor leftBackMotor = null;
     public DcMotor rightBackMotor = null;
     public DcMotor liftMotor = null;
-    public DcMotor rightIntakeWheel = null;
-    public DcMotor leftIntakeWheel = null;
     public Servo leftTopGrabber = null;
     public Servo rightTopGrabber = null;
     public Servo leftBottomGrabber = null;
     public Servo rightBottomGrabber = null;
     public Servo rightJewel = null;
-    public Servo rightIntakeArm = null;
-    public Servo leftIntakeArm = null;
 //    public Servo rightRamp = null;
 //    public Servo leftRamp = null;
     public ColorSensor rightColorSensor;
+
 
     public static final double START_SERVO = .25;
 
@@ -46,8 +41,6 @@ public class Hardware_Speedy
         leftBackMotor = hwMap.dcMotor.get("left back motor");
         rightBackMotor = hwMap.dcMotor.get("right back motor");
         liftMotor = hwMap.dcMotor.get("lift motor");
-        rightIntakeWheel = hwMap.dcMotor.get("right intake wheel");
-        leftIntakeWheel = hwMap.dcMotor.get("left intake wheel");
 
         leftTopGrabber = hwMap.servo.get("left top grabber");
         rightTopGrabber = hwMap.servo.get("right top grabber");
@@ -56,8 +49,6 @@ public class Hardware_Speedy
         rightJewel = hwMap.servo.get("right jewel");
 //        rightRamp = hwMap.servo.get("right ramp");
 //        leftRamp = hwMap.servo.get("left ramp");
-        leftIntakeArm = hwMap.servo.get("left intake arm");
-        rightIntakeArm = hwMap.servo.get("right intake arm");
 
         rightColorSensor = hwMap.colorSensor.get("right color");
 
@@ -66,8 +57,6 @@ public class Hardware_Speedy
         leftBackMotor.setDirection(DcMotor.Direction.REVERSE);
         rightBackMotor.setDirection(DcMotor.Direction.FORWARD);
         liftMotor.setDirection(DcMotor.Direction.FORWARD);
-        leftIntakeWheel.setDirection(DcMotor.Direction.FORWARD);
-        rightIntakeWheel.setDirection(DcMotor.Direction.REVERSE);
 
         leftFrontMotor.setPower(0);
         rightFrontMotor.setPower(0);
@@ -77,14 +66,11 @@ public class Hardware_Speedy
 
 
         leftTopGrabber.setDirection(Servo.Direction.REVERSE);
-        leftTopGrabber.setPosition(.15);
-        rightTopGrabber.setPosition(.15);
+        leftTopGrabber.setPosition(START_SERVO);
+        rightTopGrabber.setPosition(START_SERVO);
         leftBottomGrabber.setDirection(Servo.Direction.REVERSE);
-        leftIntakeArm.setDirection(Servo.Direction.REVERSE);
-        rightIntakeArm.setPosition(0);
-        leftIntakeArm.setPosition(0);
-        leftBottomGrabber.setPosition(.15);
-        rightBottomGrabber.setPosition(.15);
+        leftBottomGrabber.setPosition(START_SERVO);
+        rightBottomGrabber.setPosition(.27);
         rightJewel.setPosition(1);
 //        rightRamp.setPosition(0);
 //        leftRamp.setPosition(0);

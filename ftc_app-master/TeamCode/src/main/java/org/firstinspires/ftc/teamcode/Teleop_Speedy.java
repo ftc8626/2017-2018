@@ -52,11 +52,11 @@ public class Teleop_Speedy extends OpMode {
             right = -.2 * (gamepad1.right_stick_y);}
 
         //jewel arm
-       /* if(gamepad1.x)
+        if(gamepad1.x)
             robot.rightJewel.setPosition(.3);
         else if(gamepad1.y)
             robot.rightJewel.setPosition(1);
-*/
+
 //        else if (gamepad1.a)
 //        {
 //            robot.leftRamp.setPosition(.8);
@@ -71,55 +71,42 @@ public class Teleop_Speedy extends OpMode {
         //toggle precise drive
         //right trigger = sneaky
         //left trigger = speedy
+
        if(gamepad1.right_trigger > 0 && PRECISE_DRIVE == false)
             PRECISE_DRIVE = true;
         else if (gamepad1.left_trigger > 0 && PRECISE_DRIVE == true)
             PRECISE_DRIVE = false;
 
-        //intake wheels
-        if(gamepad1.x || gamepad2.x) {
-            robot.leftIntakeWheel.setPower(.5);
-            robot.rightIntakeWheel.setPower(.5);
-        }
-        if(gamepad1.y || gamepad2.y) {
-            robot.leftIntakeWheel.setPower(-.5);
-            robot.rightIntakeWheel.setPower(-.5);
-        }
-        if(gamepad1.dpad_left) {
-            robot.leftIntakeWheel.setPower(0);
-            robot.rightIntakeWheel.setPower(0);
-        }
 
-        //intake servos
-        if(gamepad1.a || gamepad2.a) {
-            robot.leftIntakeArm.setPosition(.7);
-            robot.rightIntakeArm.setPosition(.7);
-        }
-        if(gamepad1.b || gamepad2.b) {
-            robot.leftIntakeArm.setPosition(0);
-            robot.rightIntakeArm.setPosition(0);
-        }
+ /*       if(gamepad1.left_stick_y<0 && left<MAX_FWD)
+            left = -gamepad1.left_stick_y;
+        else if(gamepad1.left_stick_y==0 && left>0)
+            left-=INCREMENT;
 
-        //dpad = lift
-        if(gamepad1.dpad_up || gamepad2.dpad_up)
-            robot.liftMotor.setPower(.6);
-        else if (gamepad1.dpad_down || gamepad2.dpad_down)
-            robot.liftMotor.setPower(-.6);
-        else
-            robot.liftMotor.setPower(0);
+        if(gamepad1.right_stick_y<0 && right<MAX_FWD)
+            right = -gamepad1.right_stick_y;
+        else if(gamepad1.right_stick_y==0 && right>0)
+            right-=INCREMENT;
 
-        //retract grabbers
-        if(gamepad1.dpad_right) {
-            robot.rightTopGrabber.setPosition(0);
-            robot.leftTopGrabber.setPosition(0);
-            robot.rightBottomGrabber.setPosition(0);
-            robot.leftBottomGrabber.setPosition(0);
-        }
+        if(gamepad1.left_stick_y>0 && left>MAX_REV)
+            left = -gamepad1.left_stick_y;
+        else if(gamepad1.left_stick_y==0 && left<0)
+            left+=INCREMENT;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
         /*if(gamepad2.dpad_up)
+=======
+        if(gamepad1.right_stick_y>0 && right>MAX_REV)
+            right = -gamepad1.right_stick_y;
+        else if(gamepad1.right_stick_y==0 && right<0)
+            right+=INCREMENT;
+*/
+        //dpad = lift
+        if(gamepad1.dpad_up)
+>>>>>>> parent of 50613d3... code push
             robot.liftMotor.setPower(.5);
-        else if (gamepad2.dpad_down)
+        else if (gamepad1.dpad_down)
             robot.liftMotor.setPower(-.5);
 =======
         if(gamepad1.right_stick_y>0 && right>MAX_REV)
@@ -135,9 +122,10 @@ public class Teleop_Speedy extends OpMode {
 >>>>>>> 7764d86ac77a73ca53502845bd973039962987ff
         else
             robot.liftMotor.setPower(0);
-*/
+
         //left bumper = closed
         //right bumper = open
+
        if(gamepad1.right_bumper) {
             robot.rightTopGrabber.setPosition(.27);
             robot.leftTopGrabber.setPosition(.22);
@@ -156,7 +144,6 @@ public class Teleop_Speedy extends OpMode {
         robot.leftBackMotor.setPower(left);
         robot.rightBackMotor.setPower(right);
 
-        //reset servos
         if(gamepad1.guide){
             robot.leftTopGrabber.setPosition(.1);
             robot.rightTopGrabber.setPosition(.1);
