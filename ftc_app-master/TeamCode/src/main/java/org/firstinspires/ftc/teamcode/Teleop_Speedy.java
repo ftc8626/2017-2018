@@ -93,10 +93,6 @@ public class Teleop_Speedy extends OpMode {
         else if(gamepad1.left_stick_y==0 && left<0)
             left+=INCREMENT;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-        /*if(gamepad2.dpad_up)
-=======
         if(gamepad1.right_stick_y>0 && right>MAX_REV)
             right = -gamepad1.right_stick_y;
         else if(gamepad1.right_stick_y==0 && right<0)
@@ -104,22 +100,20 @@ public class Teleop_Speedy extends OpMode {
 */
         //dpad = lift
         if(gamepad1.dpad_up)
->>>>>>> parent of 50613d3... code push
             robot.liftMotor.setPower(.5);
         else if (gamepad1.dpad_down)
             robot.liftMotor.setPower(-.5);
-=======
+
         if(gamepad1.right_stick_y>0 && right>MAX_REV)
             right = -gamepad1.right_stick_y;
         else if(gamepad1.right_stick_y==0 && right<0)
             right+=INCREMENT;
-*/
+
         //dpad = lift
         if(gamepad1.dpad_up)
             robot.liftMotor.setPower(.9);
         else if (gamepad1.dpad_down)
             robot.liftMotor.setPower(-.9);
->>>>>>> 7764d86ac77a73ca53502845bd973039962987ff
         else
             robot.liftMotor.setPower(0);
 
